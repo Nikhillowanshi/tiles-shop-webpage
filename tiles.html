@@ -5,9 +5,9 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>Tiles - Tile Store</title>
-  <link rel="stylesheet" href="/assets/css/styles.css">
-  <script defer src="assets/js/header.js"></script>
-  <script defer src="assets/js/footer.js"></script>
+  <link rel="stylesheet" href="styles.css">
+  <script defer src="header.js"></script>
+  <script defer src="footer.js"></script>
 </head>
 <body class="category-page category-page--tiles" data-category="tiles">
 
@@ -31,8 +31,8 @@
 <!-- Footer Inject -->
   <div id="footer-placeholder"></div>
 
-  <script defer src="/assets/js/products.js"></script>
-  <script defer src="/assets/js/main.js"></script>
+  <script defer src="products.js"></script>
+  <script defer src="main.js"></script>
     <script>
   // Improved partial loader
   async function loadPartials(id, file, callback) {
@@ -50,12 +50,12 @@
   }
 
   // Load header + initialize header.js
-  loadPartials("header-placeholder", "partials/header.html", () => {
+  loadPartials("header-placeholder", "header.html", () => {
     if (typeof initHeader === "function") initHeader();
   });
 
   // Load footer + initialize footer.js
-  loadPartials("footer-placeholder", "partials/footer.html", () => {
+  loadPartials("footer-placeholder", "footer.html", () => {
     if (typeof initFooter === "function") initFooter();
   });
 </script>
