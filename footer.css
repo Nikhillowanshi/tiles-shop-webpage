@@ -26,7 +26,7 @@ footer {
         rgba(0, 0, 0, 0.89),   /* Upar se halka black overlay */
         rgba(0, 0, 0, 0.89)    /* Neeche tak same opacity */
     ),
-    url("/assets/images/about2.jpg"); /* Tumhari image */
+    url("about2.jpg"); /* Tumhari image */
 
     background-size: cover;   /* Image poora cover kare */
     background-position: center;
@@ -116,4 +116,5 @@ footer {
             flex-direction: column;
             align-items: flex-start;
         }
+
     }
