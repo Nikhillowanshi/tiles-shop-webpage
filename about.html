@@ -4,8 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>About Us - MyTiles</title>
-  <script defer src="assets/js/header.js"></script>
-  <script defer src="assets/js/footer.js"></script>
+  <script defer src="header.js"></script>
+  <script defer src="footer.js"></script>
   <style>
     :root {
       --primary-color: #0d6efd;
@@ -64,9 +64,9 @@
       <h2>Gallery</h2>
       <div class="slider">
         <div class="slides" id="slides">
-          <img src="assets/images/about1.jpg" alt="Showroom">
-          <img src="assets/images/about2.jpg" alt="Tiles">
-          <img src="assets/images/about3.jpg" alt="Marble">
+          <img src="about1.jpg" alt="Showroom">
+          <img src="about2.jpg" alt="Tiles">
+          <img src="about3.jpg" alt="Marble">
         </div>
         <div class="slider-buttons">
           <button id="prev">❮</button>
@@ -100,11 +100,11 @@
       }
     }
 
-    loadPartials("header-placeholder", "partials/header.html", () => {
+    loadPartials("header-placeholder", "header.html", () => {
       if (typeof initHeader === "function") initHeader();
     });
 
-    loadPartials("footer-placeholder", "partials/footer.html", () => {
+    loadPartials("footer-placeholder", "footer.html", () => {
       if (typeof initFooter === "function") initFooter();
     });
 
@@ -125,3 +125,4 @@
   </script>
 </body>
 </html>
+
