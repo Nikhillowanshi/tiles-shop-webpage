@@ -44,12 +44,12 @@
   }
 
   // Load header + initialize header.js
-  loadPartials("header-placeholder", "partials/header.html", () => {
+  loadPartials("header-placeholder", "header.html", () => {
     if (typeof initHeader === "function") initHeader();
   });
 
   // Load footer + initialize footer.js
-  loadPartials("footer-placeholder", "partials/footer.html", () => {
+  loadPartials("footer-placeholder", "footer.html", () => {
     if (typeof initFooter === "function") initFooter();
   });
 </script>
