@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Us - MyTiles</title>
+  <script defer src="assets/js/header.js"></script>
+  <script defer src="assets/js/footer.js"></script>
+  <style>
+    :root {
+      --primary-color: #0d6efd;
+      --secondary-color: #fd7e14;
+      --dark-color: #212529;
+      --light-color: #f8f9fa;
+      --text-light: #ffffff;
+    }
+
+    body { font-family: "Segoe UI", Arial, sans-serif; margin: 0; background: var(--light-color); }
+
+    /* Hero Section */
+    .hero { text-align: center; padding: 60px 20px; background: var(--primary-color); color: var(--text-light); }
+    .hero h1 { font-size: 2.5em; }
+    .hero h1 span { color: var(--secondary-color); }
+
+    /* About Section */
+    .about-section { max-width: 1000px; margin: 40px auto; padding: 0 20px; }
+    .about-section h2 { margin: 20px 0 10px; color: var(--primary-color); }
+    .about-section p { line-height: 1.6; color: #444; }
+
+    /* Photo Slider */
+    .slider { position: relative; max-width: 800px; margin: 40px auto; overflow: hidden; border-radius: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+    .slides { display: flex; transition: transform 0.5s ease-in-out; }
+    .slides img { width: 100%; border-radius: 12px; }
+    .slider-buttons { position: absolute; top: 50%; width: 100%; display: flex; justify-content: space-between; transform: translateY(-50%); }
+    .slider-buttons button { background: rgba(0,0,0,0.5); color: #fff; border: none; padding: 10px; cursor: pointer; border-radius: 50%; }
+
+    /* Map */
+    .map-container { margin: 40px auto; max-width: 1000px; height: 400px; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+  </style>
+</head>
+<body>
+  <!-- ✅ Header Placeholder -->
+  <div id="header-placeholder"></div>
+
+  <!-- ✅ About Content -->
+  <main class="about-section">
+    <section class="hero">
+      <h1>About <span>MyTiles</span></h1>
+    </section>
+
+    <section>
+      <h2>About Us</h2>
+      <p>
+        MyTiles is your trusted partner for high-quality tiles, marble, and waterproofing solutions. We aim to bring elegance and durability to every project with our modern designs and premium materials.
+      </p>
+    </section>
+
+    <section>
+      <h2>Address</h2>
+      <p><strong>Our Office:</strong> 123 Tile Street, New Delhi, India</p>
+    </section>
+
+    <section>
+      <h2>Gallery</h2>
+      <div class="slider">
+        <div class="slides" id="slides">
+          <img src="assets/images/about1.jpg" alt="Showroom">
+          <img src="assets/images/about2.jpg" alt="Tiles">
+          <img src="assets/images/about3.jpg" alt="Marble">
+        </div>
+        <div class="slider-buttons">
+          <button id="prev">❮</button>
+          <button id="next">❯</button>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Find Us on Map</h2>
+      <div class="map-container">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d224345.8392401899!2d77.06889962714943!3d28.527582006972704!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390ce2b3b2b1b1b1%3A0xdeadbeef12345678!2sNew%20Delhi!5e0!3m2!1sen!2sin!4v1234567890" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+      </div>
+    </section>
+  </main>
+
+  <!-- ✅ Footer Placeholder -->
+  <div id="footer-placeholder"></div>
+
+  <script>
+    // Load header and footer
+    async function loadPartials(id, file, callback) {
+      try {
+        const res = await fetch(file);
+        if (!res.ok) throw new Error(`Failed to load ${file}`);
+        document.getElementById(id).innerHTML = await res.text();
+        if (typeof callback === "function") callback();
+      } catch (err) {
+        console.error(err);
+        document.getElementById(id).innerHTML = "<p>Failed to load section</p>";
+      }
+    }
+
+    loadPartials("header-placeholder", "partials/header.html", () => {
+      if (typeof initHeader === "function") initHeader();
+    });
+
+    loadPartials("footer-placeholder", "partials/footer.html", () => {
+      if (typeof initFooter === "function") initFooter();
+    });
+
+    // Slider functionality
+    const slides = document.getElementById("slides");
+    const prev = document.getElementById("prev");
+    const next = document.getElementById("next");
+    let index = 0;
+
+    function showSlide(i) {
+      const total = slides.children.length;
+      index = (i + total) % total;
+      slides.style.transform = `translateX(-${index * 100}%)`;
+    }
+
+    prev.addEventListener("click", () => showSlide(index - 1));
+    next.addEventListener("click", () => showSlide(index + 1));
+  </script>
+</body>
+</html>

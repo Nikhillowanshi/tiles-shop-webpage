@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Waterproof - Tile Store</title>
+  <link rel="stylesheet" href="/assets/css/styles.css">
+  <script defer src="assets/js/header.js"></script>
+  <script defer src="assets/js/footer.js"></script>
+</head>
+<body class="category-page category-page--waterproof" data-category="waterproof">
+
+
+  <!-- Header Inject -->
+  <div id="header-placeholder"></div>
+
+  <main class="category-page__main">
+    <div class="category-page__controls">
+      <input id="search-input" class="category-page__search" placeholder="Search marble...">
+      <select id="sort-select" class="category-page__sort">
+        <option value="default">Sort by</option>
+        <option value="price-asc">Price (Low → High)</option>
+        <option value="price-desc">Price (High → Low)</option>
+        <option value="alpha">Alphabetical</option>
+      </select>
+    </div>
+
+    <div id="category-products" class="category-page__products"></div>
+  </main>
+
+<!-- Footer Inject -->
+  <div id="footer-placeholder"></div>
+
+  <script defer src="/assets/js/products.js"></script>
+  <script defer src="/assets/js/main.js"></script>
+      <script>
+  // Improved partial loader
+  async function loadPartials(id, file, callback) {
+    try {
+      const res = await fetch(file);
+      if (!res.ok) throw new Error(`Failed to load ${file}`);
+      document.getElementById(id).innerHTML = await res.text();
+
+      // callback run karega jab content inject ho jaye
+      if (typeof callback === "function") callback();
+    } catch (err) {
+      console.error(err);
+      document.getElementById(id).innerHTML = "<p>Failed to load section</p>";
+    }
+  }
+
+  // Load header + initialize header.js
+  loadPartials("header-placeholder", "partials/header.html", () => {
+    if (typeof initHeader === "function") initHeader();
+  });
+
+  // Load footer + initialize footer.js
+  loadPartials("footer-placeholder", "partials/footer.html", () => {
+    if (typeof initFooter === "function") initFooter();
+  });
+</script>
+</body>
+</html>
