@@ -101,6 +101,7 @@ body {
 
 .category-page__sort {
     padding: 8px;
+    max-width: 105px;
     border-radius: 8px;
     border: 1px solid #ddd
 }
